@@ -13,6 +13,7 @@ body{
     left: 50%;
     transform:translate(-50%,-50%);
     text-align: center;
+    width: 60%;
 }
 
 .container h1{
@@ -20,9 +21,23 @@ body{
     font-size: 36px ;
 }
 
+.empty{
+    margin: 20px;
+}
+
+.btn-add{
+    border-radius: 5px;
+    color: white;
+    border: none;
+    width: 150px;
+    height: 25px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.398);
+    background: rgb(69, 122, 46);
+}
+
 .btn-add:hover {
-    background-color: rgb(41, 44, 76);
-    color: white; 
+    background-color: rgb(72, 168, 30);
+    color: black; 
     cursor: pointer;
 }
 
@@ -88,10 +103,26 @@ body{
     background: rgb(255, 0, 0);
 }
 
+.list{
+    margin: 20px;
+    display: none;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.398);
+}
+
 .list th{
-    width: 100%;
+    width: 20%;
     padding: 5px;
     border: 1px solid black;
+}
+
+.list .desc{
+    width: 60%;
+}
+
+.list .del{
+    width: 0;
 }
 
 .list, .list td{

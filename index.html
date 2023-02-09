@@ -12,35 +12,37 @@
 <body>
 
     <div class="container">
-        <h1> Lista de Platos </h1>
+        <h1> Menu List </h1>
         <div class="li-container">
             <table id="tbl" class="list">
                 <thead>
                     <tr>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Description</th>
+                    <th class="desc">Description</th>
                     <th>Cubiertos</th>
-                    <th></th>
+                    <th class="del"></th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+
+                </tbody>
             </table>
         </div>
         <div class="empty">
-            <p>No tienes platos agregados</p>
+            <p>You have no added dishes</p>
         </div>
 
-        <button class="btn-add"> add new </button>
+        <button class="btn-add"> Add new </button>
 
 
     </div>
     <form class="add-menu" method="POST" name="sample">
         <div class="add-menu-content">
             <input id="name" name="name" type="text" placeholder="Name">
-            <input id="price" name="price" type="number" placeholder="price">
-            <textarea id="description" name="description" cols="30" rows="10" placeholder="description"></textarea>
-            <input id="cubiertos" name="cubiertos" type="number" placeholder="cubiertos">
+            <input id="price" name="price" type="number" placeholder="Price">
+            <textarea id="description" name="description" cols="30" rows="10" placeholder="Description (optional)"></textarea>
+            <input id="fork" name="fork" type="number" placeholder="Forks">
         </div>
         <input type="button" value="Add" name="add" onclick="addRow();" class="add">
         <li><a class="close" href="*">X</a></li>
