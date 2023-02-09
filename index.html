@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>MenuList</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1> Lista de Platos </h1>
+        <div class="li-container">
+            <table id="tbl" class="list">
+                <thead>
+                    <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Cubiertos</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="empty">
+            <p>No tienes platos agregados</p>
+        </div>
+
+        <button class="btn-add"> add new </button>
+
+
+    </div>
+    <form class="add-menu" method="POST" name="sample">
+        <div class="add-menu-content">
+            <input id="name" name="name" type="text" placeholder="Name">
+            <input id="price" name="price" type="number" placeholder="price">
+            <textarea id="description" name="description" cols="30" rows="10" placeholder="description"></textarea>
+            <input id="cubiertos" name="cubiertos" type="number" placeholder="cubiertos">
+        </div>
+        <input type="button" value="Add" name="add" onclick="addRow();" class="add">
+        <li><a class="close" href="*">X</a></li>
+    </form>
+    <script src="./main.js"></script>
+</body>
+
+</html>
