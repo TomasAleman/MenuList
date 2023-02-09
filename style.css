@@ -64,10 +64,24 @@ body{
 
 .add-menu-content input , textarea{
     margin: 5px;
+    margin-right: 1px;
     display: block;
     padding: 8px;
     width: 92%;
     border: 1px solid black;
+}
+
+.simbol-price{
+    display: flex;
+}
+
+.add-menu-content select{
+    margin: 5px 5px 5px 0px;
+    display: block;
+    padding: 0px;
+    width: 20%;
+    border: 1px solid black;
+    display: flex;
 }
 
 .close{
@@ -90,10 +104,9 @@ body{
     height: 20px;
     cursor: pointer;
     position: absolute;
-    transform: translate(0% , 800%);
+    transform: translate(-20% , 830%);
     border-radius:5px; 
     border-color: white;
-    box-shadow: inset;
     color: white;
     background: rgb(115, 57, 140);
 }

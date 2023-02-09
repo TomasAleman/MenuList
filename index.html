@@ -17,11 +17,11 @@
             <table id="tbl" class="list">
                 <thead>
                     <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th class="desc">Description</th>
-                    <th>Cubiertos</th>
-                    <th class="del"></th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th class="desc">Description</th>
+                        <th>Cubiertos</th>
+                        <th class="del"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@
             </table>
         </div>
         <div class="empty">
-            <p>You have no added dishes</p>
+            <p>You have no added menus</p>
         </div>
 
         <button class="btn-add"> Add new </button>
@@ -40,11 +40,19 @@
     <form class="add-menu" method="POST" name="sample">
         <div class="add-menu-content">
             <input id="name" name="name" type="text" placeholder="Name">
-            <input id="price" name="price" type="number" placeholder="Price">
+            <div class="simbol-price">
+                <input id="price" name="price" type="number" placeholder="Price" min="0">
+                <select name="simbol" id="simbol">
+                    <option value="$">$</option>
+                    <option value="US$">US$</option>
+                    <option value="€">€</option>
+                    <option value="£">£</option>
+                </select>
+            </div>
             <textarea id="description" name="description" cols="30" rows="10" placeholder="Description (optional)"></textarea>
-            <input id="fork" name="fork" type="number" placeholder="Forks">
+            <input id="fork" name="fork" type="number" placeholder="Forks" min="0">
         </div>
-        <input type="button" value="Add" name="add" onclick="addRow();" class="add">
+        <input type="button" value="Add" name="add" class="add">
         <li><a class="close" href="*">X</a></li>
     </form>
     <script src="./main.js"></script>
