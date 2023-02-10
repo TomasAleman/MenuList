@@ -5,6 +5,8 @@ const add = document.querySelector('.add');
 const formEl = document.querySelector(".add-menu");
 const tableEl = document.querySelector('table');
 
+const tabArray = [];
+
 addbtn.addEventListener("click", (e) => {
     e.preventDefault();
     document.querySelector(".add-menu").style.display = "flex";
@@ -65,11 +67,15 @@ function addRow(name, simbol, price, description, fork) {
         td5.innerHTML = '<input type="button" name="remove" value="Remove" onclick="remRow(this);" class="deletebtn">';
 
         document.getElementById("tbl").appendChild(tr);
+
+        var row = [name, simbol, price, fork];
+        tabArray.push(row);
+
     } else if (!validatePrice(price) || !validateForks(fork)) {
-        alert("Insert a valid value"); 
+        alert("Insert a valid value");
     } else {
-        alert("Please complete all the fields");  
-    }    
+        alert("Please complete all the fields");
+    }
 };
 
 function remRow(row) {
@@ -104,3 +110,78 @@ function validateForks(fork) {
     else
         return true;
 }
+
+function countRowsOfTotalTab(){
+    var tab = document.getElementById("tbl-count");
+    var rowCount = tab.childElementCount;
+    return rowCount;
+}
+
+function countAll() {
+    document.getElementById("tbl-count").style.display = "block";
+
+    if(countRowsOfTotalTab() > 2){
+        removeAll();
+    }
+
+    var price$ = 0;
+    var priceUSD = 0;
+    var priceEu = 0;
+    var priceLi = 0;
+    for (var i = 0; i < tabArray.length; i++) {
+        if (tabArray[i][1] == "$") {
+            price$ += parseInt(tabArray[i][2].replace("$", ""));
+        } else if (tabArray[i][1] == "USD") {
+            priceUSD += parseInt(tabArray[i][2].replace("USD", ""));
+        } else if (tabArray[i][1] == "€") {
+            priceEu += parseInt(tabArray[i][2].replace("€", ""));
+        } else {
+            priceLi += parseInt(tabArray[i][2].replace("£", ""));
+        }
+    }
+    var fork = countForks();
+    var dishesCount = countdishes();
+
+    var tr = document.createElement('tr');
+    tr.id="tr-count";
+
+    var td1 = tr.appendChild(document.createElement('td'));
+    var td2 = tr.appendChild(document.createElement('td'));
+    var td3 = tr.appendChild(document.createElement('td'));
+    var td4 = tr.appendChild(document.createElement('td'));
+    var td5 = tr.appendChild(document.createElement('td'));
+    var td6 = tr.appendChild(document.createElement('td'));
+
+    td1.innerHTML = dishesCount;
+    td2.innerHTML = "$" + price$;
+    td3.innerHTML = "USD" + priceUSD;
+    td4.innerHTML = "€" + priceEu;
+    td5.innerHTML = "£" + priceLi;;
+    td6.innerHTML = fork;
+
+    document.getElementById("tbl-count").appendChild(tr);
+}
+
+function countdishes() {
+    var tab = document.getElementById("tbl");
+    var rowCount = tab.childElementCount;
+
+    var dishesCount = rowCount - 2;
+    return dishesCount;
+}
+
+function countForks() {
+    var forks = 0;
+    for (var i = 0; i < tabArray.length; i++) {
+        forks += parseInt(tabArray[i][3]);
+    }
+    return forks;
+}
+
+function removeAll(row) {
+    var h = document.getElementById('tr-count');
+    h.parentNode.removeChild(h);
+}
+
+// flata agregar funcion de remover del array la fila que se elimino
+

@@ -41,6 +41,23 @@ body{
     cursor: pointer;
 }
 
+.btn-count{
+    margin-top: 10px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    width: 150px;
+    height: 25px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.398);
+    background: rgb(55, 46, 122);
+}
+
+.btn-count:hover {
+    background-color: rgb(30, 168, 157);
+    color: black; 
+    cursor: pointer;
+}
+
 .add-menu{
     background:rgb(0, 0, 0, 0.6);
     width: 100%;
@@ -139,6 +156,24 @@ body{
 }
 
 .list, .list td{
+    border: 1px solid black;
+}
+
+.list-count{
+    margin: 20px;
+    display: none;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.398);
+}
+
+.list-count th{
+    width: 560px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.list-count, .list-count td{
     border: 1px solid black;
 }
 
