@@ -4,6 +4,7 @@ const close = document.querySelector('.close');
 const add = document.querySelector('.add');
 const formEl = document.querySelector(".add-menu");
 const tableEl = document.querySelector('table');
+var id = 0;
 
 const tabArray = [];
 
@@ -59,17 +60,24 @@ function addRow(name, simbol, price, description, fork) {
         var td3 = tr.appendChild(document.createElement('td'));
         var td4 = tr.appendChild(document.createElement('td'));
         var td5 = tr.appendChild(document.createElement('td'));
+        var td6 = tr.appendChild(document.createElement('td'));
+        td6.setAttribute("hidden", true);
+        td6.id = "id";
 
         td1.innerHTML = name;
         td2.innerHTML = simbol + price;
         td3.innerHTML = description;
         td4.innerHTML = fork;
         td5.innerHTML = '<input type="button" name="remove" value="Remove" onclick="remRow(this);" class="deletebtn">';
+        td6.innerHTML = id;
 
         document.getElementById("tbl").appendChild(tr);
 
-        var row = [name, simbol, price, fork];
+        var row = [name, simbol, price, fork, id];
+
         tabArray.push(row);
+
+        id++;
 
     } else if (!validatePrice(price) || !validateForks(fork)) {
         alert("Insert a valid value");
@@ -82,6 +90,7 @@ function remRow(row) {
     var e = row.parentNode.parentNode;
     e.parentNode.removeChild(e);
     valCountRows();
+    removeToArray(row);
 }
 
 function valCountRows() {
@@ -111,7 +120,7 @@ function validateForks(fork) {
         return true;
 }
 
-function countRowsOfTotalTab(){
+function countRowsOfTotalTab() {
     var tab = document.getElementById("tbl-count");
     var rowCount = tab.childElementCount;
     return rowCount;
@@ -120,7 +129,7 @@ function countRowsOfTotalTab(){
 function countAll() {
     document.getElementById("tbl-count").style.display = "block";
 
-    if(countRowsOfTotalTab() > 2){
+    if (countRowsOfTotalTab() > 2) {
         removeAll();
     }
 
@@ -143,7 +152,7 @@ function countAll() {
     var dishesCount = countdishes();
 
     var tr = document.createElement('tr');
-    tr.id="tr-count";
+    tr.id = "tr-count";
 
     var td1 = tr.appendChild(document.createElement('td'));
     var td2 = tr.appendChild(document.createElement('td'));
@@ -173,7 +182,7 @@ function countdishes() {
 function countForks() {
     var forks = 0;
     for (var i = 0; i < tabArray.length; i++) {
-        forks += parseInt(tabArray[i][3]);
+        forks += parseFloat(tabArray[i][3]);
     }
     return forks;
 }
@@ -183,5 +192,21 @@ function removeAll(row) {
     h.parentNode.removeChild(h);
 }
 
-// flata agregar funcion de remover del array la fila que se elimino
+function getTrId(row) {
+    var f = row.parentNode.parentNode;
+    var idTd = f.querySelector('#id');
+    return idTd.textContent;
+}
 
+function removeToArray(row) {
+    var i = 0;
+    var flag = false;
+    trId = getTrId(row);
+    while (i < tabArray.length && flag == false) {
+        if (parseInt(tabArray[i][4]) == trId) {
+            tabArray.splice(i,1);
+            flag = true;
+        }
+        i++;
+    }
+}
